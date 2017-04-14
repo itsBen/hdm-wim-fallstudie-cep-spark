@@ -6,18 +6,19 @@
 
 *Hinweis: Die folgende Anleitung gilt für eine Windows Umgebung
 
-1. Scala 2.11.8 als **.zip** herunterladen. ([www.scala-lang.org](https://www.scala-lang.org/download/2.11.8.html)) und nach `C:/dev/scala/` entpacken.
-2. **SCALA_HOME** mit dem Verweis `C:/dev/scala/scala-2.11.8` als Umgebungsvariable hinzufügen.
-3. **SCALA_HOME/bin** zum Path hinzufügen.
+1. Scala 2.11.8 als **.zip** herunterladen. ([www.scala-lang.org](https://www.scala-lang.org/download/2.11.8.html)) und nach
+ `"C:/dev/scala/"` entpacken.
+2. `"SCALA_HOME"` mit dem Verweis `"C:/dev/scala/scala-2.11.8"` als Umgebungsvariable hinzufügen.
+3. `"%SCALA_HOME%\bin"` zum Path hinzufügen.
 4. Um 2. & 3. zu testen in der Eingabeaufforderung `scala` eingeben. Dort sollte dann `scala>` stehen.
 
 ### Apache Spark installieren
 
 1. Aktuellen Build von Apache Spark herunterladen ([www.spark.apache.org](http://spark.apache.org/downloads.html)) in unserem Fall **spark-2.1.0-bin-hadoop2.7** und nach `C:/dev/spark/` entpacken.
-2. **SPARK_HOME** mit dem Verweis auf `C:/dev/spark/spark-2.1.0-bin-hadoop2.7` als Umgebungsvariable hinzufügen.
-3. **SPARK_HOME/bin** zum Path hinzufügen.
+2. `"SPARK_HOME"` mit dem Verweis auf `"C:/dev/spark/spark-2.1.0-bin-hadoop2.7"` als Umgebungsvariable hinzufügen.
+3. `"%SPARK_HOME%\bin"` zum Path hinzufügen.
 4. `winutils.exe` für die entsprechende Version von hadoop [herunterladen](https://github.com/steveloughran/winutils) (2.7) und nach `C:/dev/hadoop/bin` kopieren.
-5. **HADOOP_HOME** mit dem Verweis auf `C:/dev/hadoop/` als Umgebungsvariable hinzufügen.
+5. `"HADOOP_HOME"` mit dem Verweis auf `"C:/dev/hadoop/"` als Umgebungsvariable hinzufügen.
 
 Im Folgenden wird beschrieben, wie man Apache Spark im *standalone* modus, also einen lokalen Cluster lokal ausführt.
 
