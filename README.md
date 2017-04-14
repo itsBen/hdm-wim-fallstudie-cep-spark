@@ -19,16 +19,19 @@
 4. `winutils.exe` für die entsprechende Version von hadoop [herunterladen](https://github.com/steveloughran/winutils) (2.7) und nach `C:/dev/hadoop/bin` kopieren.
 5. **HADOOP_HOME** mit dem Verweis auf `C:/dev/hadoop/` als Umgebungsvariable hinzufügen.
 
-Um Spark Master zu starten folgenden Befehl in der Eingabeaufforderung eingeben:
+Im Folgenden wird beschrieben, wie man Apache Spark im *standalone* modus, also einen lokalen Cluster lokal ausführt.
+
+Der Spark Application Master ist dafür verantwortlich resource requests auf die entsprechenden worker threads umzuleiten.
+Um den Master zu starten folgenden Befehl in die Eingabeaufforderung eingeben:
 
 `spark-class.cmd org.apache.spark.deploy.master.Master`
 
 Jetzt im Browser folgende Adresse eingeben: `http://localhost:8080/`. Dort steht die IP des Spark Masters z.b. `spark://192.168.1.27:7077`. 
-Eine weitere Eingabeaufforderung öffnen und den Befehl 
+Mit dem folgenden Befehl in einer weiteren Eingabeaufforderung, wird ein worker angelegt und beim Master angelegt. 
 
 `spark-class.cmd org.apache.spark.deploy.worker.Worker ip.des.spark.masters`
 
-Nun läuft Apache Spark
+Nun sollte der Worker auch auf der Master Seite im Browser zu sehen sein.
 
 spark shell:
 
