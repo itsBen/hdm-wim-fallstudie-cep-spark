@@ -26,10 +26,10 @@ Um den Master zu starten folgenden Befehl in die Eingabeaufforderung eingeben:
 
 `spark-class.cmd org.apache.spark.deploy.master.Master`
 
-Jetzt im Browser folgende Adresse eingeben: `http://localhost:8080/`. Dort steht die IP des Spark Masters z.b. `spark://192.168.1.27:7077`. 
+Jetzt im Browser folgende Adresse eingeben: `http://localhost:8080/`. Dort steht die IP des Spark Masters `spark://ip:port`. 
 Mit dem folgenden Befehl in einer weiteren Eingabeaufforderung, wird ein worker angelegt und beim Master angelegt. 
 
-`spark-class.cmd org.apache.spark.deploy.worker.Worker ip.des.spark.masters`
+`spark-class.cmd org.apache.spark.deploy.worker.Worker spark://ip:port`
 
 Nun sollte der Worker auch auf der Master Seite im Browser zu sehen sein.
 
@@ -39,4 +39,4 @@ spark shell:
 
 um eine jar application auszuführen:
 
-`spark-submit –class mainclassname –master ip.des.spark.masters pfadzurjar`
+`spark-submit –class mainclassname –master spark://ip:port pfadzurjar`

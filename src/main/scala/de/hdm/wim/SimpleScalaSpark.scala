@@ -5,8 +5,10 @@ import org.apache.spark.SparkConf
 
 /**
   * Created by ben on 14/04/2017.
+  * Count appearance of a's and b's in a file
   */
 object SimpleScalaSpark {
+
 
   def main(args: Array[String]): Unit = {
 
