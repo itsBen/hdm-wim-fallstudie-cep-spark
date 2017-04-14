@@ -1,0 +1,19 @@
+{
+	"timeStamp":"04/14/17 8:15 PM",
+	"sender":
+	{
+		"id":1,
+		"firstName":"Mike",
+		"lastName":"Turbo",
+		"role":"Teamleader"
+	},	
+	"token":
+	{
+		"id":1,
+		"type":"x",
+		"meta":
+		{
+			"blubb":1
+		}
+	}
+}
