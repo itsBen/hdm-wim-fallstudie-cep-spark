@@ -41,3 +41,74 @@ spark shell:
 um eine jar application auszuführen:
 
 `spark-submit –class mainclassname –master spark://ip:port pfadzurjar`
+
+## Stream
+
+Um einen stream von random generierten messages zu generieren, muss der `messageServer` under `de.hdm.wim.source` gestartet werden. Solange dieser nicht gestoppt wird, generierte er sekündlich eine neue Message.
+
+### Messageformat
+Die Message ist wie folgt aufgebaut:
+
+```json
+{
+ 	"_messageId": -874189116,
+ 	"_messageOrigin": "USER_INTERFACE",
+ 	"_messageTopic": "TOPIC_4",
+ 	"_event": {
+ 		"_eventId": 587700887,
+ 		"_eventType": "USER",
+ 		"_eventSource": "USER_INTERFACE",
+ 		"_payload": "payload",
+ 		"_sender": {
+ 			"_firstName": "Mike",
+ 			"_lastName": "Obrut",
+ 			"_role": "PM"
+ 		},
+ 		"_timestamp": {
+ 			"iLocalMillis": 1492633504007,
+ 			"iChronology": {
+ 				"iBase": {
+ 					"iMinDaysInFirstWeek": 4
+ 				}
+ 			}
+ 		}
+ 	}
+}
+```
+
+### Enums
+ 
+Um einheitliche Bezeichnungen zu verwenden, wurden folgende enums unter `source` festgelegt.
+ 
+#### Origin
+```
+public enum Origin {
+    SPEECH_TOKENIZATION,
+    MACHINE_LEARNING,
+    USER_INTERFACE,
+    SEMANTISCHE_REPRESENATION,
+    EVENT;
+}
+```
+
+#### Topic
+```
+public enum Topic {
+    SPEECH_TOKENIZATION,
+    MACHINE_LEARNING,
+    USER_INTERFACE,
+    SEMANTISCHE_REPRESENATION,
+    EVENT;
+}
+```
+
+#### EventType
+```
+public enum Topic {
+    TOPIC_1,
+    TOPIC_2,
+    TOPIC_3,
+    TOPIC_4,
+    TOPIC_5;
+}
+```

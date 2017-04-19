@@ -8,7 +8,7 @@ import java.util.Random;
 public class Enums {
 
     /**
-     * The enum Origin. test
+     * The enum Origin.
      */
     public enum Origin {
         SPEECH_TOKENIZATION,
