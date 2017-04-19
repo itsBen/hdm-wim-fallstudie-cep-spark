@@ -22,11 +22,11 @@ public class SimpleStreaming {
                 .setMaster("local[*]")
                 .setAppName("SimpleStreaming");
 
-        JavaStreamingContext ssc =
-                new JavaStreamingContext(conf, Durations.seconds(5));
+        JavaStreamingContext ssc = new JavaStreamingContext(conf, Durations.seconds(5));
 
         // Receive streaming data from the source
         JavaReceiverInputDStream<String> lines = ssc.socketTextStream(HOST, PORT);
+
         lines.print();
 
         // Execute the Spark workflow defined above
@@ -34,7 +34,8 @@ public class SimpleStreaming {
 
         try {
             ssc.awaitTermination();
-        }catch(InterruptedException ie){
+        }
+        catch(InterruptedException ie){
             logger.warn("InterruptedException: " + ie);
         }
     }

@@ -1,0 +1,24 @@
+{
+	"_messageId": -874189116,
+	"_messageOrigin": "USER_INTERFACE",
+	"_messageTopic": "TOPIC_4",
+	"_event": {
+		"_eventId": 587700887,
+		"_eventType": "USER",
+		"_eventSource": "USER_INTERFACE",
+		"_payload": "payload",
+		"_sender": {
+			"_firstName": "Mike",
+			"_lastName": "Obrut",
+			"_role": "PM"
+		},
+		"_timestamp": {
+			"iLocalMillis": 1492633504007,
+			"iChronology": {
+				"iBase": {
+					"iMinDaysInFirstWeek": 4
+				}
+			}
+		}
+	}
+}
