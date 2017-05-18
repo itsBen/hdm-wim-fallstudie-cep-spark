@@ -29,17 +29,17 @@ public class MessageServer {
     public static void main(String[] args) throws IOException, InterruptedException {
 
         BlockingQueue<String> eventQueue        = new ArrayBlockingQueue<>(1000);
-        final Participant sender1               = new Participant("Jim",    "Barton",    "CEO");
-        final Participant sender2               = new Participant("Mike",   "Obrut",     "PM");
-        final ArrayList<Participant> senders    = new ArrayList<>();
+        //final Participant sender1               = new Participant("Jim",    "Barton",    "CEO");
+        //final Participant sender2               = new Participant("Mike",   "Obrut",     "PM");
+        //final ArrayList<Participant> senders    = new ArrayList<>();
 
-        senders.add(sender1);
-        senders.add(sender2);
+        //senders.add(sender1);
+        //senders.add(sender2);
 
         SERVER_EXECUTOR.execute(new SteamingServer(eventQueue));
 
         while (true) {
-            MessageGenerator msgg   = new MessageGenerator(senders);
+            MessageGenerator msgg   = new MessageGenerator();
             Message message         = msgg.GenerateMessage();
             Gson gson               = new Gson();
 

@@ -13,16 +13,15 @@ import java.util.Random;
  */
 public class MessageGenerator {
 
-    private ArrayList<Participant> _senders = new ArrayList<>();
+    //private ArrayList<Participant> _senders = new ArrayList<>();
     private final Random random             = new Random();
 
     /**
      * Instantiates a new Message generator.
      *
-     * @param senders the senders
      */
-    public MessageGenerator(ArrayList<Participant> senders) {
-        _senders = senders;
+    public MessageGenerator() {
+        //_senders = senders;
     }
 
     /**
@@ -31,9 +30,9 @@ public class MessageGenerator {
      * @return the message
      */
     public Message GenerateMessage(){
-        int sendersCount = _senders.size();
+        //int sendersCount = _senders.size();
 
-        Event event = Event.GenerateEvent(_senders.get(random.nextInt(sendersCount)),"payload");
+        Event event = Event.GenerateEvent("payload");
 
         return new Message(random.nextInt(), Enums.Origin.GetRandom(),Enums.Topic.GetRandom(),event);
     }

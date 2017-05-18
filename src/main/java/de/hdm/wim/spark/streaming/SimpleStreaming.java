@@ -1,4 +1,4 @@
-package de.hdm.wim.streaming;
+package de.hdm.wim.spark.streaming;
 
 import org.apache.log4j.*;
 import org.apache.spark.SparkConf;

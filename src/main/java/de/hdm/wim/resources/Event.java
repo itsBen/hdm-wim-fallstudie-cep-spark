@@ -14,7 +14,7 @@ public class Event {
     private Enums.EventType     _eventType;
     private Enums.Origin        _eventSource;
     private String              _payload;
-    private Participant         _sender;
+    //private Participant         _sender;
     private LocalDateTime       _timestamp;
 
     /**
@@ -23,27 +23,26 @@ public class Event {
      * @param eventId     the eventId
      * @param eventType   the eventType
      * @param eventSource the eventSource / component which created the event
-     * @param sender      the sender / TODO: id or senderclass with additional info
+     *
      * @param timestamp   the timestamp of creation
      * @param payload     the actual payload TODO:
      */
-    public Event(int eventId, Enums.EventType eventType, Enums.Origin eventSource, Participant sender, LocalDateTime timestamp, String payload) {
+    public Event(int eventId, Enums.EventType eventType, Enums.Origin eventSource, LocalDateTime timestamp, String payload) {
         this._eventId       = eventId;
         this._eventSource   = eventSource;
         this._eventType     = eventType;
         this._payload       = payload;
-        this._sender        = sender;
+        //this._sender        = sender;
         this._timestamp     = timestamp;
     }
 
     /**
      * Generate event event.
      *
-     * @param sender  the sender
      * @param payload the payload
      * @return the event
      */
-    public static Event GenerateEvent(Participant sender, String payload){
+    public static Event GenerateEvent( String payload){
 
         final Random random = new Random();
 
@@ -52,7 +51,7 @@ public class Event {
         Enums.Origin eventSource    = Enums.Origin.GetRandom();
         LocalDateTime timestamp     = LocalDateTime.now();
 
-        return new Event(eventId, eventType, eventSource, sender, timestamp, payload);
+        return new Event(eventId, eventType, eventSource, timestamp, payload);
     }
 
 
@@ -92,14 +91,7 @@ public class Event {
         return _payload;
     }
 
-    /**
-     * Gets sender.
-     *
-     * @return the sender
-     */
-    public Participant get_sender() {
-        return _sender;
-    }
+
 
     /**
      * Gets timestamp.
@@ -146,14 +138,6 @@ public class Event {
         this._payload = _payload;
     }
 
-    /**
-     * Sets sender.
-     *
-     * @param _sender the sender
-     */
-    public void set_sender(Participant _sender) {
-        this._sender = _sender;
-    }
 
     /**
      * Sets timestamp.
