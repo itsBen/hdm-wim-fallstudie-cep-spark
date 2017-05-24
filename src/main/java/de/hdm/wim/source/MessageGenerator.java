@@ -2,8 +2,8 @@ package de.hdm.wim.source;
 
 import de.hdm.wim.resources.Enums;
 import de.hdm.wim.resources.Event;
-import de.hdm.wim.resources.Message;
-import de.hdm.wim.resources.Participant;
+//import de.hdm.wim.resources.Message;
+//import de.hdm.wim.resources.Participant;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -19,7 +19,7 @@ public class MessageGenerator {
     /**
      * Instantiates a new Message generator.
      *
-     */
+      */
     public MessageGenerator() {
         //_senders = senders;
     }
@@ -29,11 +29,11 @@ public class MessageGenerator {
      *
      * @return the message
      */
-    public Message GenerateMessage(){
+ /*   public Message GenerateMessage(){
         //int sendersCount = _senders.size();
 
         Event event = Event.GenerateEvent("payload");
 
         return new Message(random.nextInt(), Enums.Origin.GetRandom(),Enums.Topic.GetRandom(),event);
-    }
+    }*/
 }

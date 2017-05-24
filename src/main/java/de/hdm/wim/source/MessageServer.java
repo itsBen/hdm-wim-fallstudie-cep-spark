@@ -1,8 +1,8 @@
 package de.hdm.wim.source;
 
-import com.google.gson.Gson;
+import com.google.gson.Gson;/*
 import de.hdm.wim.resources.Message;
-import de.hdm.wim.resources.Participant;
+import de.hdm.wim.resources.Participant;*/
 import org.apache.log4j.Logger;
 
 import java.io.*;
@@ -38,14 +38,14 @@ public class MessageServer {
 
         SERVER_EXECUTOR.execute(new SteamingServer(eventQueue));
 
-        while (true) {
+/*        while (true) {
             MessageGenerator msgg   = new MessageGenerator();
             Message message         = msgg.GenerateMessage();
             Gson gson               = new Gson();
 
             eventQueue.put(gson.toJson(message));
             Thread.sleep(TimeUnit.SECONDS.toMillis(MESSAGE_PERIOD_SECONDS));
-        }
+        }*/
     }
 
     private static class SteamingServer implements Runnable {

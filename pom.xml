@@ -23,7 +23,9 @@
         <joda.version>2.9.2</joda.version>
 
         <!-- PubSub -->
-        <pubsub.version>0.13.0-alpha</pubsub.version>
+        <!--<pubsub.version>0.13.0-alpha</pubsub.version>-->
+        <pubsub.version>0.18.0-alpha</pubsub.version>
+
 
         <!-- Test -->
         <grpc.version>1.2.0</grpc.version>

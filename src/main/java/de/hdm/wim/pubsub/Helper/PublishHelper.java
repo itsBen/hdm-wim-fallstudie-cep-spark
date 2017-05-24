@@ -1,6 +1,7 @@
 package de.hdm.wim.pubsub.Helper;
 
 import com.google.api.gax.core.ApiFuture;
+import com.google.api.gax.core.ApiFutures;
 import com.google.cloud.pubsub.spi.v1.Publisher;
 import com.google.protobuf.ByteString;
 import com.google.pubsub.v1.PubsubMessage;
@@ -19,24 +20,70 @@ public class PublishHelper {
 
 	private static final Logger logger = Logger.getLogger(PublishHelper.class);
 
-	public void publishMessageToTopic(List<String> messages, TopicName topicName) throws Exception {
-		Publisher publisher = null;
+	public void publishMessage(String message, TopicName topicName) throws Exception {
+
+		Publisher publisher 						= null;
+		List<ApiFuture<String>> messageIdFutures 	= new ArrayList<>();
+
     	try {
 			publisher = Publisher.defaultBuilder(topicName).build();
-			List<ApiFuture<String>> messageIds = new ArrayList<>();
 
-			for (String message : messages) {
-				ByteString data = ByteString.copyFromUtf8(message);
-				PubsubMessage pubsubMessage = PubsubMessage.newBuilder().setData(data).build();
-				ApiFuture<String> messageIdFuture = publisher.publish(pubsubMessage);
-				messageIds.add(messageIdFuture);
-			}
+				ByteString data 					= ByteString.copyFromUtf8(message);
+				PubsubMessage pubsubMessage 		= PubsubMessage.newBuilder()
+														.setData(data)
+														.build();
 
-			for (ApiFuture<String> messageId : messageIds) {
-				System.out.println("published with message ID: " + messageId.get());
-			}
+				//TODO: add attributes to message
+				// Once published, returns a server-assigned message id (unique within the topic)
+				ApiFuture<String> messageIdFuture 	= publisher.publish(pubsubMessage);
+				messageIdFutures.add(messageIdFuture);
+
 		} finally {
+			// wait on any pending publish requests.
+			List<String> messageIds = ApiFutures.allAsList(messageIdFutures).get();
+
+			for (String messageId : messageIds) {
+				logger.info("published with message ID: " + messageId);
+			}
+
 			if (publisher != null) {
+				// When finished with the publisher, shutdown to free up resources.
+				publisher.shutdown();
+			}
+		}
+	}
+
+	public void publishMessages(List<String> messages, TopicName topicName) throws Exception {
+
+		Publisher publisher 						= null;
+		List<ApiFuture<String>> messageIdFutures 	= new ArrayList<>();
+
+		try {
+			publisher = Publisher.defaultBuilder(topicName).build();
+
+			// schedule publishing one message at a time : messages get automatically batched
+			for (String message : messages) {
+				ByteString data 					= ByteString.copyFromUtf8(message);
+				PubsubMessage pubsubMessage 		= PubsubMessage.newBuilder()
+					.setData(data)
+					.build();
+
+				//TODO: add attributes to message
+				// Once published, returns a server-assigned message id (unique within the topic)
+				ApiFuture<String> messageIdFuture 	= publisher.publish(pubsubMessage);
+				messageIdFutures.add(messageIdFuture);
+			}
+
+		} finally {
+			// wait on any pending publish requests.
+			List<String> messageIds = ApiFutures.allAsList(messageIdFutures).get();
+
+			for (String messageId : messageIds) {
+				logger.info("published with message ID: " + messageId);
+			}
+
+			if (publisher != null) {
+				// When finished with the publisher, shutdown to free up resources.
 				publisher.shutdown();
 			}
 		}

@@ -1,13 +1,13 @@
 package de.hdm.wim.pubsub;
 
-import com.google.cloud.pubsub.spi.v1.AckReplyConsumer;
 import com.google.cloud.pubsub.spi.v1.MessageReceiver;
 import com.google.cloud.pubsub.spi.v1.Subscriber;
 import com.google.common.util.concurrent.MoreExecutors;
 import com.google.pubsub.v1.*;
 import de.hdm.wim.pubsub.Helper.PublishHelper;
+/*
 import de.hdm.wim.pubsub.Helper.SubscriptionAdminHelper;
-import de.hdm.wim.pubsub.Helper.TopicAdminHelper;
+*/
 import org.apache.log4j.Logger;
 
 import java.util.Arrays;
@@ -20,6 +20,7 @@ public class Start {
 
 	private static final Logger logger = Logger.getLogger(Start.class);
 
+/*
 	public static void main(String[] args) throws Exception {
 
 		String topicId 		= "test-topic-123";
@@ -31,7 +32,7 @@ public class Start {
 		// publish messages to topic
 		PublishHelper ph 		= new PublishHelper();
 		List<String> messages 	= Arrays.asList("first message", "second message");
-		ph.publishMessageToTopic(messages, topic);
+		ph.PublishMessages(messages, topic);
 
 		logger.info("test 1");
 
@@ -86,4 +87,5 @@ public class Start {
 
 
 	}
+*/
 }
